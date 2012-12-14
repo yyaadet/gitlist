@@ -37,6 +37,7 @@ class MainController implements ControllerProviderInterface
 
             return $app['twig']->render('index.twig', array(
                 'repositories'   => $repositories,
+                'total'  => count($repositories),
             ));
         })->bind('homepage');
 

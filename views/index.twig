@@ -5,7 +5,9 @@
 {% include 'navigation.twig' %}
 
 <div class="container">
-
+   
+    <div><h4>We have {{ total }} repos. Host at /home/git_source/xxx.git </h4></div>
+    <br />
     {% for repository in repositories %}
     <div class="repository">
         <div class="repository-header">
