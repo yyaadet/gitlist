@@ -16,20 +16,24 @@ class MainController implements ControllerProviderInterface
         $route->get('/', function() use ($app) {
             $repositories = $app['git']->getRepositories($app['git.repos']);
             
-            foreach ($repositories as $repo) { 
+            foreach ($repositories as &$repository) { 
+                $repo = $app['git']->getRepository($app['git.repos'] . $repository["name"]);
                 $branch = "master";
                 $file = null;
                 $type = $file ? "$branch -- $file" : $branch;
                 $commits = $repo->getPaginatedCommits($type);
+                $categorized = array();
     
                 foreach ($commits as $commit) {
                     $date = $commit->getDate();
                     $date = $date->format('m/d/Y');
                     $categorized[$date][] = $commit;
+                    if (count($categorized[$date]) > 3) break; 
                 }
                 
-                $repo["commits"] = $categorized;
+                $repository["commits"] = $categorized;
             }
+            
 
             return $app['twig']->render('index.twig', array(
                 'repositories'   => $repositories,
