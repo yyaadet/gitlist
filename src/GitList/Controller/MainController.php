@@ -17,8 +17,8 @@ class MainController implements ControllerProviderInterface
             $repositories = $app['git']->getRepositories($app['git.repos']);
             
             foreach ($repositories as $repo) { 
-                $branch = "master"
-                $file = null
+                $branch = "master";
+                $file = null;
                 $type = $file ? "$branch -- $file" : $branch;
                 $commits = $repo->getPaginatedCommits($type);
     
