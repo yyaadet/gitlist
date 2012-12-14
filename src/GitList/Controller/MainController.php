@@ -28,7 +28,7 @@ class MainController implements ControllerProviderInterface
                     $categorized[$date][] = $commit;
                 }
                 
-                $repo["commits"] = $categorized
+                $repo["commits"] = $categorized;
             }
 
             return $app['twig']->render('index.twig', array(
