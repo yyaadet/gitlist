@@ -18,6 +18,7 @@ class MainController implements ControllerProviderInterface
             
             foreach ($repositories as $repo) { 
                 $branch = "master"
+                $file = null
                 $type = $file ? "$branch -- $file" : $branch;
                 $commits = $repo->getPaginatedCommits($type);
     
