@@ -4,8 +4,11 @@ namespace GitList\Controller;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
+<<<<<<< HEAD
 use Silex\ControllerCollection;
 use Symfony\Component\HttpFoundation\Response;
+=======
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -20,6 +23,11 @@ class TreeController implements ControllerProviderInterface
             if (!$branch) {
                 $branch = $repository->getHead();
             }
+<<<<<<< HEAD
+=======
+
+            list($branch, $tree) = $app['util.repository']->extractRef($repository, $branch, $tree);
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
             $files = $repository->getTree($tree ? "$branch:\"$tree\"/" : $branch);
             $breadcrumbs = $app['util.view']->getBreadcrumbs($tree);
 
@@ -41,8 +49,13 @@ class TreeController implements ControllerProviderInterface
                 'tags'           => $repository->getTags(),
                 'readme'         => $app['util.repository']->getReadme($repo, $branch),
             ));
+<<<<<<< HEAD
         })->assert('repo', '[\w-._]+')
           ->assert('branch', '[\w-._]+')
+=======
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+          ->assert('branch', '[\w-._\/]+')
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
           ->assert('tree', '.+')
           ->bind('tree');
 
@@ -65,19 +78,33 @@ class TreeController implements ControllerProviderInterface
                 'branches'       => $repository->getBranches(),
                 'tags'           => $repository->getTags(),
             ));
+<<<<<<< HEAD
         })->assert('repo', '[\w-._]+')
           ->assert('branch', '[\w-._]+')
+=======
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+          ->assert('branch', '[\w-._\/]+')
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
           ->bind('search');
 
         $route->get('{repo}/{branch}/', function($repo, $branch) use ($app, $treeController) {
             return $treeController($repo, $branch);
+<<<<<<< HEAD
         })->assert('repo', '[\w-._]+')
           ->assert('branch', '[\w-._]+')
+=======
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+          ->assert('branch', '[\w-._\/]+')
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
           ->bind('branch');
 
         $route->get('{repo}/', function($repo) use ($app, $treeController) {
             return $treeController($repo);
+<<<<<<< HEAD
         })->assert('repo', '[\w-._]+')
+=======
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
           ->bind('repository');
 
         $route->get('{repo}/{format}ball/{branch}', function($repo, $format, $branch) use ($app) {
@@ -108,10 +135,19 @@ class TreeController implements ControllerProviderInterface
                 'Content-Transfer-Encoding' => 'binary',
             ));
         })->assert('format', '(zip|tar)')
+<<<<<<< HEAD
           ->assert('repo', '[\w-._]+')
           ->assert('branch', '[\w-._]+')
+=======
+          ->assert('repo', $app['util.routing']->getRepositoryRegex())
+          ->assert('branch', '[\w-._\/]+')
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
           ->bind('archive');
 
         return $route;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4

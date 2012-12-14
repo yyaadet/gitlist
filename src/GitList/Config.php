@@ -6,6 +6,7 @@ class Config
 {
     protected $data;
 
+<<<<<<< HEAD
     public function __construct($file)
     {
         if (!file_exists($file)) {
@@ -13,6 +14,19 @@ class Config
         }
 
         $this->data = parse_ini_file('config.ini', true);
+=======
+    public static function fromFile($file) {
+        if (!file_exists($file)) {
+            die(sprintf('Please, create the %1$s file.', $file));
+        }
+        $data = parse_ini_file($file, true);
+        return new static($data);
+    }
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
         $this->validateOptions();
     }
 
@@ -46,7 +60,14 @@ class Config
     protected function validateOptions()
     {
         if (!$this->get('git', 'repositories') || !is_dir($this->get('git', 'repositories'))) {
+<<<<<<< HEAD
             die("Please, edit the config.ini file and provide your repositories directory");
         }
     }
 }
+=======
+            die("Please, edit the config file and provide your repositories directory");
+        }
+    }
+}
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
