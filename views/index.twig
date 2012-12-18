@@ -17,6 +17,7 @@
         <div class="repository-body">
             <p>{{ repository.description }}</p>
         </div>
+        {% if repository.commits %}
         <div class="repository-body">
             {% for date, commit in repository.commits %}
             <table class="table table-striped table-bordered">
@@ -40,6 +41,7 @@
             </table>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
     {% endfor %}
 
