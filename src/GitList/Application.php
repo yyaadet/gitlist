@@ -8,6 +8,10 @@ use Silex\Provider\UrlGeneratorServiceProvider;
 use GitList\Provider\GitServiceProvider;
 use GitList\Provider\RepositoryUtilServiceProvider;
 use GitList\Provider\ViewUtilServiceProvider;
+<<<<<<< HEAD
+=======
+use GitList\Provider\RoutingUtilServiceProvider;
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
 
 /**
  * GitList application.
@@ -44,6 +48,10 @@ class Application extends SilexApplication
         $this->register(new ViewUtilServiceProvider());
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new UrlGeneratorServiceProvider());
+<<<<<<< HEAD
+=======
+        $this->register(new RoutingUtilServiceProvider());
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
 
         $this['twig'] = $this->share($this->extend('twig', function($twig, $app) {
             $twig->addFilter('md5', new \Twig_Filter_Function('md5'));
@@ -56,6 +64,10 @@ class Application extends SilexApplication
             if ($app['debug']) {
                 return;
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
             return $app['twig']->render('error.twig', array(
                 'message' => $e->getMessage(),
             ));

@@ -11,13 +11,22 @@
     {% for repository in repositories %}
     <div class="repository">
         <div class="repository-header">
+<<<<<<< HEAD
             <i class="icon-folder-open icon-spaced"></i> <a href="{{ path('repository', {repo: repository.name}) }}">{{ repository.name }}</a>
             <a href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><i class="rss pull-right"></i></a>
+=======
+            <i class="icon-folder-open icon-spaced"></i> <a href="{{ path('repository', {repo: repository.relativePath}) }}">{{ repository.name }}</a>
+            <a href="{{ path('rss', {repo: repository.relativePath, branch: 'master'}) }}"><i class="rss pull-right"></i></a>
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
         </div>
         <div class="repository-body">
             <p>{{ repository.description }}</p>
         </div>
+<<<<<<< HEAD
         {% if repository.commits %}
+=======
+<<<<<<< HEAD
+>>>>>>> 416e80d18debe113aec04b6a39f951340cc37098
         <div class="repository-body">
             {% for date, commit in repository.commits %}
             <table class="table table-striped table-bordered">
@@ -41,7 +50,12 @@
             </table>
             {% endfor %}
         </div>
+<<<<<<< HEAD
         {% endif %}
+=======
+=======
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
+>>>>>>> 416e80d18debe113aec04b6a39f951340cc37098
     </div>
     {% endfor %}
 

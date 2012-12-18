@@ -5,6 +5,21 @@
  * https://github.com/klaussilveira/gitlist
  */
 
+<<<<<<< HEAD
 require 'vendor/autoload.php';
 $app = require 'boot.php';
 $app->run();
+=======
+// Set the default timezone for systems without date.timezone set in php.ini
+if (!ini_get('date.timezone')) {
+    date_default_timezone_set('UTC');
+}
+
+require 'vendor/autoload.php';
+
+// Load configuration
+$config = GitList\Config::fromFile('config.ini');
+
+$app = require 'boot.php';
+$app->run();
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4

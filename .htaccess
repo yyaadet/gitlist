@@ -3,7 +3,11 @@
 
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
+<<<<<<< HEAD
     RewriteRule ^ index.php [L]
+=======
+    RewriteRule ^(.*)$ /index.php [L,NC]
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
 </IfModule>
 <Files config.ini>
     order allow,deny

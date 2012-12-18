@@ -18,14 +18,12 @@ class MainController implements ControllerProviderInterface
             
             foreach ($repositories as &$repository) { 
                 $categorized = array();
-				$repo = $app['git']->getRepository($app['git.repos'] . $repository["name"]);
+                $repo = $app['git']->getRepository($app['git.repos'] . $repository["name"]);
                 $branch = "master";
-				if (!$repo->hasBranch($branch)) 
-				    continue;
+		 if (!$repo->hasBranch($branch)) 
+                    continue;
                 $file = null;
                 $type = $file ? "$branch -- $file" : $branch;
-
-                
                 $commits = $repo->getPaginatedCommits($type);
     
                 foreach ($commits as $commit) {

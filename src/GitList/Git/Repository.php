@@ -25,7 +25,11 @@ class Repository extends BaseRepository
         }
 
         $logs = $this->getPrettyFormat($command);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
         foreach ($logs as $log) {
             $commit = new Commit;
             $commit->importData($log);
@@ -40,7 +44,11 @@ class Repository extends BaseRepository
         $command = "log --grep='$query' --pretty=format:'<item><hash>%H</hash><short_hash>%h</short_hash><tree>%T</tree><parent>%P</parent><author>%an</author><author_email>%ae</author_email><date>%at</date><commiter>%cn</commiter><commiter_email>%ce</commiter_email><commiter_date>%ct</commiter_date><message><![CDATA[%s]]></message></item>'";
 
         $logs = $this->getPrettyFormat($command);
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
         foreach ($logs as $log) {
             $commit = new Commit;
             $commit->importData($log);

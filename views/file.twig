@@ -19,6 +19,13 @@
         </div>
         {% if fileType == 'image' %}
         <center><img src="{{ path('blob_raw', {repo: repo, branch: branch, file: file}) }}" alt="{{ file }}" class="image-blob" /></center>
+<<<<<<< HEAD
+=======
+
+        {% elseif fileType == 'markdown' %}
+        <div class="readme-view"><div id="readme-content">{{ blob }}</div></div>
+
+>>>>>>> 44ed193402c5a25cddbc80ef0c87183111f348b4
         {% else %}
         <pre id="sourcecode" language="{{ fileType }}">{{ blob }}</pre>
         {% endif %}
